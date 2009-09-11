@@ -1,0 +1,21 @@
+DESCRIPTION="NJL's collection of LADSPA plugins"
+HOMEPAGE="http://devel.tlrmx.org/audio/"
+SRC_URI="http://devel.tlrmx.org/audio/source/${P#ladspa-}.tar.gz"
+SRC_DIR=${PN#ladspa-}
+
+PATCH_URI="0.2.1-CC.patch"
+
+DISTCLEANFILES="ladspa.h"
+
+src_compile() {
+	lndirs
+	cd ${B}
+	cygmake
+}
+
+src_install() {
+	cd ${B}
+	exeinto /usr/lib/ladspa
+	doexe *.so
+	dodoc PLUGINS
+}

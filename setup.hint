@@ -1,0 +1,4 @@
+category: Audio
+requires: libgcc1
+sdesc: "NJL's collection of LADSPA audio plugins"
+ldesc: "NJL's collection of LADSPA audio plugins"
