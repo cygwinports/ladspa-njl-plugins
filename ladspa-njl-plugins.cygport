@@ -1,0 +1,25 @@
+NAME="ladspa-njl-plugins"
+VERSION=0.2.1
+RELEASE=1
+CATEGORY="Audio"
+SUMMARY="NJL's collection of LADSPA audio plugins"
+DESCRIPTION="NJL's collection of LADSPA audio plugins"
+HOMEPAGE="http://devel.tlrmx.org/audio/"
+SRC_URI="http://devel.tlrmx.org/audio/source/njl-plugins-${VERSION}.tar.gz"
+SRC_DIR="njl-plugins"
+PATCH_URI="0.2.1-CC.patch"
+
+DISTCLEANFILES="ladspa.h"
+
+src_compile() {
+	lndirs
+	cd ${B}
+	cygmake
+}
+
+src_install() {
+	cd ${B}
+	exeinto /usr/lib/ladspa
+	doexe *.so
+	dodoc PLUGINS
+}
